@@ -7,23 +7,24 @@
  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
  */
 
-#ifndef __SNAPD_GET_INTERFACES_LEGACY_H__
-#define __SNAPD_GET_INTERFACES_LEGACY_H__
+#pragma once
 
 #include "snapd-request.h"
 
 G_BEGIN_DECLS
 
-G_DECLARE_FINAL_TYPE (SnapdGetInterfacesLegacy, snapd_get_interfaces_legacy, SNAPD, GET_INTERFACES_LEGACY, SnapdRequest)
+G_DECLARE_FINAL_TYPE(SnapdGetInterfacesLegacy, snapd_get_interfaces_legacy,
+                     SNAPD, GET_INTERFACES_LEGACY, SnapdRequest)
 
-SnapdGetInterfacesLegacy *_snapd_get_interfaces_legacy_new       (GCancellable             *cancellable,
-                                                                  GAsyncReadyCallback       callback,
-                                                                  gpointer                  user_data);
+SnapdGetInterfacesLegacy *
+_snapd_get_interfaces_legacy_new(GCancellable *cancellable,
+                                 GAsyncReadyCallback callback,
+                                 gpointer user_data);
 
-GPtrArray                *_snapd_get_interfaces_legacy_get_plugs (SnapdGetInterfacesLegacy *request);
+GPtrArray *
+_snapd_get_interfaces_legacy_get_plugs(SnapdGetInterfacesLegacy *request);
 
-GPtrArray                *_snapd_get_interfaces_legacy_get_slots (SnapdGetInterfacesLegacy *request);
+GPtrArray *
+_snapd_get_interfaces_legacy_get_slots(SnapdGetInterfacesLegacy *request);
 
 G_END_DECLS
-
-#endif /* __SNAPD_GET_INTERFACES_LEGACY_H__ */

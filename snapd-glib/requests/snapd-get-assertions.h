@@ -7,22 +7,20 @@
  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
  */
 
-#ifndef __SNAPD_GET_ASSERTIONS_H__
-#define __SNAPD_GET_ASSERTIONS_H__
+#pragma once
 
 #include "snapd-request.h"
 
 G_BEGIN_DECLS
 
-G_DECLARE_FINAL_TYPE (SnapdGetAssertions, snapd_get_assertions, SNAPD, GET_ASSERTIONS, SnapdRequest)
+G_DECLARE_FINAL_TYPE(SnapdGetAssertions, snapd_get_assertions, SNAPD,
+                     GET_ASSERTIONS, SnapdRequest)
 
-SnapdGetAssertions *_snapd_get_assertions_new            (const gchar         *type,
-                                                          GCancellable        *cancellable,
-                                                          GAsyncReadyCallback  callback,
-                                                          gpointer             user_data);
+SnapdGetAssertions *_snapd_get_assertions_new(const gchar *type,
+                                              GCancellable *cancellable,
+                                              GAsyncReadyCallback callback,
+                                              gpointer user_data);
 
-GStrv               _snapd_get_assertions_get_assertions (SnapdGetAssertions *request);
+GStrv _snapd_get_assertions_get_assertions(SnapdGetAssertions *request);
 
 G_END_DECLS
-
-#endif /* __SNAPD_GET_ASSERTIONS_H__ */

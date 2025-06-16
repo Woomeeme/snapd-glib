@@ -3,16 +3,27 @@ option('introspection',
        description: 'Build the introspection data (requires gobject-introspection)')
 option('docs',
        type: 'boolean', value: true,
-       description: 'Build the API reference (requires gtk-doc)')
+       description: 'Build the API reference (requires gi-docgen, and gobject-introspection)')
 option('vala-bindings',
        type: 'boolean', value: true,
        description: 'Build the Vala bindings (requires introspection)')
-option('qt-bindings',
-       type: 'boolean', value: true,
-       description: 'Build the Qt bindings')
+option('qt5',
+       type : 'boolean',
+       value : false,
+       description: 'Build the Qt5 bindings')
+option('qt6',
+       type : 'boolean',
+       value : true,
+       description: 'Build the Qt6 bindings')
 option('qml-bindings',
        type: 'boolean', value: true,
        description: 'Build the QML bindings (requires the Qt bindings)')
 option('soup2',
        type: 'boolean', value: false,
        description: 'Whether to build with libsoup2')
+option('examples',
+       type: 'boolean', value: true,
+       description: 'Whether to build the examples')
+option('tests',
+       type: 'boolean', value: true,
+       description: 'Whether to build the tests')

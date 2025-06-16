@@ -9,17 +9,18 @@ Uploaders:
 Build-Depends: debhelper-compat (= 13),
                dh-sequence-gir,
                dh-sequence-pkgkde-symbolshelper,
-               gtk-doc-tools (>= 1.20),
+               gi-docgen,
                libgirepository1.0-dev,
-               libglib2.0-dev (>= 2.46),
-               libjson-glib-dev (>= 1.2),
+               libglib2.0-dev,
+               libjson-glib-dev,
                libsoup-3.0-dev,
-               meson (>= 0.43.0),
-               pkg-kde-tools,
+               meson,
                qtbase5-dev,
                qtdeclarative5-dev,
+               qt6-base-dev,
+               qt6-declarative-dev,
                valac
-Standards-Version: 4.6.1
+Standards-Version: 4.7.2
 Rules-Requires-Root: no
 Homepage: https://github.com/snapcore/snapd-glib
 Vcs-Git: https://salsa.debian.org/debian-ayatana-team/snapd-glib.git
@@ -69,6 +70,7 @@ Depends: ${misc:Depends},
          libglib2.0-dev,
          libsoup-3.0-dev,
          libjson-glib-dev
+Provides: ${gir:Provides},
 Description: GLib snapd library (development files)
  snapd-glib is a library to allow GLib based applications access to snapd,
  the daemon that controls Snaps.
@@ -80,13 +82,13 @@ Description: GLib snapd library (development files)
  This package contains header files and development information, which
  is useful for building applications that need to communicate with snapd.
 
-Package: libsnapd-qt-2-1
+Package: libsnapd-qt6-2-1
 Architecture: linux-any kfreebsd-any
 Multi-Arch: same
 Depends: ${misc:Depends},
          ${shlibs:Depends}
 Suggests: snapd
-Description: Qt snapd library
+Description: Qt snapd library (Qt6 version
  snapd-glib is a library to allow GLib based applications access to snapd,
  the daemon that controls Snaps.
  .
@@ -94,7 +96,39 @@ Description: Qt snapd library
  systems, enabling secure distribution of the latest apps and utilities
  for cloud, servers, desktops and the internet of things.
  .
- snapd-qt is a wrapper library for snapd-glib for Qt applications.
+ snapd-qt is a wrapper library for snapd-glib for Qt6 applications.
+
+Package: libsnapd-qt-2-1
+Architecture: linux-any kfreebsd-any
+Multi-Arch: same
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Suggests: snapd
+Description: Qt snapd library (Qt5 version)
+ snapd-glib is a library to allow GLib based applications access to snapd,
+ the daemon that controls Snaps.
+ .
+ Snaps are 'universal' packages that work across many different Linux
+ systems, enabling secure distribution of the latest apps and utilities
+ for cloud, servers, desktops and the internet of things.
+ .
+ snapd-qt is a wrapper library for snapd-glib for Qt5 applications.
+
+Package: qml6-module-snapd
+Architecture: linux-any kfreebsd-any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Suggests: snapd
+Multi-Arch: same
+Description: Snapd QML module (Qt6 version)
+ snapd-glib is a library to allow GLib based applications access to snapd,
+ the daemon that controls Snaps.
+ .
+ Snaps are 'universal' packages that work across many different Linux
+ systems, enabling secure distribution of the latest apps and utilities
+ for cloud, servers, desktops and the internet of things.
+ .
+ This is a QML module for Qt6 applications to access snapd.
 
 Package: qml-module-snapd
 Architecture: linux-any kfreebsd-any
@@ -102,7 +136,7 @@ Depends: ${misc:Depends},
          ${shlibs:Depends},
 Suggests: snapd
 Multi-Arch: same
-Description: Snapd QML module
+Description: Snapd QML module (Qt5 version)
  snapd-glib is a library to allow GLib based applications access to snapd,
  the daemon that controls Snaps.
  .
@@ -110,7 +144,28 @@ Description: Snapd QML module
  systems, enabling secure distribution of the latest apps and utilities
  for cloud, servers, desktops and the internet of things.
  .
- This is a QML module for Qt applications to access snapd.
+ This is a QML module for Qt5 applications to access snapd.
+
+Package: libsnapd-qt6-dev
+Section: libdevel
+Architecture: linux-any kfreebsd-any
+Multi-Arch: same
+Depends: ${misc:Depends},
+         libsnapd-qt6-2-1 (= ${binary:Version}),
+         qt6-base-dev,
+Breaks: libsnapd-glib-dev (<< 1.46)
+Replaces: libsnapd-glib-dev (<< 1.46)
+Description: Qt snapd library (Qt6 development files)
+ snapd-glib is a library to allow GLib based applications access to snapd,
+ the daemon that controls Snaps.
+ .
+ Snaps are 'universal' packages that work across many different Linux
+ systems, enabling secure distribution of the latest apps and utilities
+ for cloud, servers, desktops and the internet of things.
+ .
+ snapd-qt is a wrapper library for snapd-glib for Qt6 applications.
+ .
+ This package contains the development files.
 
 Package: libsnapd-qt-dev
 Section: libdevel
@@ -121,7 +176,7 @@ Depends: ${misc:Depends},
          qtbase5-dev,
 Breaks: libsnapd-glib-dev (<< 1.46)
 Replaces: libsnapd-glib-dev (<< 1.46)
-Description: Qt snapd library (development files)
+Description: Qt snapd library (Qt5 development files)
  snapd-glib is a library to allow GLib based applications access to snapd,
  the daemon that controls Snaps.
  .
@@ -129,7 +184,7 @@ Description: Qt snapd library (development files)
  systems, enabling secure distribution of the latest apps and utilities
  for cloud, servers, desktops and the internet of things.
  .
- snapd-qt is a wrapper library for snapd-glib for Qt applications.
+ snapd-qt is a wrapper library for snapd-glib for Qt5 applications.
  .
  This package contains the development files.
 

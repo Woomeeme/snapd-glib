@@ -1,17 +1,72 @@
 #!/usr/bin/make -f
 
+NULL =
+
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 export DPKG_GENSYMBOLS_CHECK_LEVEL = 4
 
 %:
 	dh $@
 
-override_dh_auto_test:
-	dh_auto_test --no-parallel
+override_dh_auto_configure:
+	dh_auto_configure --builddirectory=build-qt6 \
+	                  --buildsystem=meson \
+	                  -- \
+	                  -Dqt6=true \
+	                  -Dqt5=false \
+	                  -Ddocs=true \
+	                  -Dexamples=true \
+	                  -Dintrospection=true \
+	                  -Dvala-bindings=true \
+	                  -Dincludedir=/usr/include/$(DEB_HOST_MULTIARCH)
+	                  $(meson_opts) \
+	                  $(NULL)
+	dh_auto_configure --builddirectory=build-qt5 \
+	                  --buildsystem=meson \
+	                  -- \
+	                  -Dqt6=false \
+	                  -Dqt5=true \
+	                  -Ddocs=false \
+	                  -Dexamples=false \
+	                  -Dintrospection=false \
+	                  -Dvala-bindings=false \
+	                  -Dincludedir=/usr/include/$(DEB_HOST_MULTIARCH)
+	                  $(meson_opts) \
+	                  $(NULL)
 
-execute_before_dh_install:
-	mkdir -p debian/tmp/usr/share/doc/libsnapd-glib-dev/
-	mv debian/tmp/usr/share/gtk-doc/html/snapd-glib debian/tmp/usr/share/doc/libsnapd-glib-dev/html
+override_dh_auto_build:
+	dh_auto_build --builddirectory=build-qt6 \
+	              --buildsystem=meson \
+	              $(NULL)
+	dh_auto_build --builddirectory=build-qt5 \
+	              --buildsystem=meson \
+	              $(NULL)
+
+override_dh_auto_test:
+	dh_auto_test --builddirectory=build-qt6 \
+	             --buildsystem=meson \
+	             --no-parallel \
+	             $(NULL)
+	dh_auto_test --builddirectory=build-qt5 \
+	             --buildsystem=meson \
+	             --no-parallel \
+	             $(NULL)
+
+override_dh_auto_install:
+	dh_auto_install --builddirectory=build-qt6 \
+	                --buildsystem=meson \
+	                $(NULL)
+	dh_auto_install --builddirectory=build-qt5 \
+	                --buildsystem=meson \
+	                $(NULL)
+
+override_dh_auto_clean:
+	dh_auto_clean --builddirectory=build-qt6 \
+	              --buildsystem=meson \
+	              $(NULL)
+	dh_auto_clean --builddirectory=build-qt5 \
+	              --buildsystem=meson \
+	              $(NULL)
 
 get-orig-source:
 	uscan --noconf --force-download --rename --download-current-version --destdir=..

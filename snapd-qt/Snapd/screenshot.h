@@ -13,20 +13,21 @@
 #include <QtCore/QObject>
 #include <Snapd/WrappedObject>
 
-class Q_DECL_EXPORT QSnapdScreenshot : public QSnapdWrappedObject
-{
-    Q_OBJECT
+#include "snapdqt_global.h"
 
-    Q_PROPERTY(QString url READ url)
-    Q_PROPERTY(quint64 width READ width);
-    Q_PROPERTY(quint64 height READ height);
+class LIBSNAPDQT_EXPORT QSnapdScreenshot : public QSnapdWrappedObject {
+  Q_OBJECT
+
+  Q_PROPERTY(QString url READ url)
+  Q_PROPERTY(quint64 width READ width);
+  Q_PROPERTY(quint64 height READ height);
 
 public:
-    explicit QSnapdScreenshot (void* snapd_object, QObject* parent = 0);
+  explicit QSnapdScreenshot(void *snapd_object, QObject *parent = 0);
 
-    QString url () const;
-    quint64 width () const;
-    quint64 height () const;
+  QString url() const;
+  quint64 width() const;
+  quint64 height() const;
 };
 
 #endif

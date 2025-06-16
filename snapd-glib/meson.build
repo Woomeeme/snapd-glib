@@ -10,9 +10,11 @@ source_h = [
   'snapd-app.h',
   'snapd-assertion.h',
   'snapd-auth-data.h',
+  'snapd-autorefresh-change-data.h',
   'snapd-category.h',
   'snapd-category-details.h',
   'snapd-change.h',
+  'snapd-change-data.h',
   'snapd-channel.h',
   'snapd-client.h',
   'snapd-connection.h',
@@ -25,6 +27,8 @@ source_h = [
   'snapd-markdown-node.h',
   'snapd-markdown-parser.h',
   'snapd-media.h',
+  'snapd-notice.h',
+  'snapd-notices-monitor.h',
   'snapd-plug.h',
   'snapd-plug-ref.h',
   'snapd-price.h',
@@ -34,6 +38,7 @@ source_h = [
   'snapd-snap.h',
   'snapd-system-information.h',
   'snapd-task.h',
+  'snapd-task-data.h',
   'snapd-user-information.h',
   'snapd-version.h',
 ]
@@ -53,6 +58,9 @@ source_private_h = [
   'requests/snapd-get-interfaces.h',
   'requests/snapd-get-interfaces-legacy.h',
   'requests/snapd-get-logs.h',
+  'requests/snapd-get-model.h',
+  'requests/snapd-get-model-serial.h',
+  'requests/snapd-get-notices.h',
   'requests/snapd-get-sections.h',
   'requests/snapd-get-snap.h',
   'requests/snapd-get-snap-conf.h',
@@ -86,9 +94,11 @@ source_c = [
   'snapd-app.c',
   'snapd-assertion.c',
   'snapd-auth-data.c',
+  'snapd-autorefresh-change-data.c',
   'snapd-category.c',
   'snapd-category-details.c',
   'snapd-change.c',
+  'snapd-change-data.c',
   'snapd-channel.c',
   'snapd-client.c',
   'snapd-client-sync.c',
@@ -102,6 +112,8 @@ source_c = [
   'snapd-markdown-node.c',
   'snapd-markdown-parser.c',
   'snapd-media.c',
+  'snapd-notice.c',
+  'snapd-notices-monitor.c',
   'snapd-plug.c',
   'snapd-plug-ref.c',
   'snapd-price.c',
@@ -111,6 +123,7 @@ source_c = [
   'snapd-snap.c',
   'snapd-system-information.c',
   'snapd-task.c',
+  'snapd-task-data.c',
   'snapd-user-information.c',
 ]
 
@@ -129,6 +142,9 @@ source_private_c = [
   'requests/snapd-get-interfaces.c',
   'requests/snapd-get-interfaces-legacy.c',
   'requests/snapd-get-logs.c',
+  'requests/snapd-get-model.c',
+  'requests/snapd-get-model-serial.c',
+  'requests/snapd-get-notices.c',
   'requests/snapd-get-sections.c',
   'requests/snapd-get-snap.c',
   'requests/snapd-get-snap-conf.c',
@@ -191,7 +207,7 @@ pc.generate (libraries: [ snapd_glib_lib ],
              version: meson.project_version (),
              subdirs: library_name)
 
-if get_option ('introspection')
+if build_introspection
   nsversion = '2'
   if get_option('soup2')
     nsversion = '1'

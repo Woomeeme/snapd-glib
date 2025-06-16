@@ -7,8 +7,7 @@
  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
  */
 
-#ifndef __SNAPD_POST_ALIASES_H__
-#define __SNAPD_POST_ALIASES_H__
+#pragma once
 
 #include "snapd-request-async.h"
 
@@ -16,18 +15,13 @@
 
 G_BEGIN_DECLS
 
-G_DECLARE_FINAL_TYPE (SnapdPostAliases, snapd_post_aliases, SNAPD, POST_ALIASES, SnapdRequestAsync)
+G_DECLARE_FINAL_TYPE(SnapdPostAliases, snapd_post_aliases, SNAPD, POST_ALIASES,
+                     SnapdRequestAsync)
 
-SnapdPostAliases *_snapd_post_aliases_new (const gchar           *action,
-                                           const gchar           *snap,
-                                           const gchar           *app,
-                                           const gchar           *alias,
-                                           SnapdProgressCallback  progress_callback,
-                                           gpointer               progress_callback_data,
-                                           GCancellable          *cancellable,
-                                           GAsyncReadyCallback    callback,
-                                           gpointer               user_data);
+SnapdPostAliases *_snapd_post_aliases_new(
+    const gchar *action, const gchar *snap, const gchar *app,
+    const gchar *alias, SnapdProgressCallback progress_callback,
+    gpointer progress_callback_data, GCancellable *cancellable,
+    GAsyncReadyCallback callback, gpointer user_data);
 
 G_END_DECLS
-
-#endif /* __SNAPD_POST_ALIASES_H__ */

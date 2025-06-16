@@ -1,0 +1,10 @@
+--- a/snapd-qt/meson.build
++++ b/snapd-qt/meson.build
+@@ -116,6 +116,7 @@
+   'Snapd/slot.h',
+   'Snapd/slot-ref.h',
+   'Snapd/snap.h',
++  'Snapd/snapdqt_global.h',
+   'Snapd/system-information.h',
+   'Snapd/task.h',
+   'Snapd/task-data.h',

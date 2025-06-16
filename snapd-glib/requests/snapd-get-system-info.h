@@ -7,8 +7,7 @@
  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
  */
 
-#ifndef __SNAPD_GET_SYSTEM_INFO_H__
-#define __SNAPD_GET_SYSTEM_INFO_H__
+#pragma once
 
 #include "snapd-request.h"
 
@@ -16,14 +15,14 @@
 
 G_BEGIN_DECLS
 
-G_DECLARE_FINAL_TYPE (SnapdGetSystemInfo, snapd_get_system_info, SNAPD, GET_SYSTEM_INFO, SnapdRequest)
+G_DECLARE_FINAL_TYPE(SnapdGetSystemInfo, snapd_get_system_info, SNAPD,
+                     GET_SYSTEM_INFO, SnapdRequest)
 
-SnapdGetSystemInfo     *_snapd_get_system_info_new                    (GCancellable        *cancellable,
-                                                                       GAsyncReadyCallback  callback,
-                                                                       gpointer             user_data);
+SnapdGetSystemInfo *_snapd_get_system_info_new(GCancellable *cancellable,
+                                               GAsyncReadyCallback callback,
+                                               gpointer user_data);
 
-SnapdSystemInformation *_snapd_get_system_info_get_system_information (SnapdGetSystemInfo *request);
+SnapdSystemInformation *
+_snapd_get_system_info_get_system_information(SnapdGetSystemInfo *request);
 
 G_END_DECLS
-
-#endif /* __SNAPD_GET_SYSTEM_INFO_H__ */

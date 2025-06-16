@@ -7,8 +7,7 @@
  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
  */
 
-#ifndef __SNAPD_POST_SNAPS_H__
-#define __SNAPD_POST_SNAPS_H__
+#pragma once
 
 #include "snapd-request-async.h"
 
@@ -16,17 +15,16 @@
 
 G_BEGIN_DECLS
 
-G_DECLARE_FINAL_TYPE (SnapdPostSnaps, snapd_post_snaps, SNAPD, POST_SNAPS, SnapdRequestAsync)
+G_DECLARE_FINAL_TYPE(SnapdPostSnaps, snapd_post_snaps, SNAPD, POST_SNAPS,
+                     SnapdRequestAsync)
 
-SnapdPostSnaps *_snapd_post_snaps_new            (const gchar           *action,
-                                                  SnapdProgressCallback  progress_callback,
-                                                  gpointer               progress_callback_data,
-                                                  GCancellable          *cancellable,
-                                                  GAsyncReadyCallback    callback,
-                                                  gpointer               user_data);
+SnapdPostSnaps *_snapd_post_snaps_new(const gchar *action,
+                                      SnapdProgressCallback progress_callback,
+                                      gpointer progress_callback_data,
+                                      GCancellable *cancellable,
+                                      GAsyncReadyCallback callback,
+                                      gpointer user_data);
 
-GStrv           _snapd_post_snaps_get_snap_names (SnapdPostSnaps        *request);
+GStrv _snapd_post_snaps_get_snap_names(SnapdPostSnaps *request);
 
 G_END_DECLS
-
-#endif /* __SNAPD_POST_SNAPS_H__ */

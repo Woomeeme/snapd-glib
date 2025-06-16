@@ -7,24 +7,20 @@
  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
  */
 
-#ifndef __SNAPD_POST_DOWNLOAD_H__
-#define __SNAPD_POST_DOWNLOAD_H__
+#pragma once
 
 #include "snapd-request.h"
 
 G_BEGIN_DECLS
 
-G_DECLARE_FINAL_TYPE (SnapdPostDownload, snapd_post_download, SNAPD, POST_DOWNLOAD, SnapdRequest)
+G_DECLARE_FINAL_TYPE(SnapdPostDownload, snapd_post_download, SNAPD,
+                     POST_DOWNLOAD, SnapdRequest)
 
-SnapdPostDownload *_snapd_post_download_new      (const gchar         *name,
-                                                  const gchar         *channel,
-                                                  const gchar         *revision,
-                                                  GCancellable        *cancellable,
-                                                  GAsyncReadyCallback  callback,
-                                                  gpointer             user_data);
+SnapdPostDownload *
+_snapd_post_download_new(const gchar *name, const gchar *channel,
+                         const gchar *revision, GCancellable *cancellable,
+                         GAsyncReadyCallback callback, gpointer user_data);
 
-GBytes            *_snapd_post_download_get_data (SnapdPostDownload   *request);
+GBytes *_snapd_post_download_get_data(SnapdPostDownload *request);
 
 G_END_DECLS
-
-#endif /* __SNAPD_POST_DOWNLOAD_H__ */

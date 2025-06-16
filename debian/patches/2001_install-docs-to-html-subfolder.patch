@@ -1,0 +1,19 @@
+Description: Install doc files to /usr/share/doc/libsnapd-glib-dev/html
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+Forwarded: no, Debian-specific
+
+--- a/doc/meson.build
++++ b/doc/meson.build
+@@ -8,9 +8,9 @@
+                                   configuration: doc_conf)
+   custom_target('documentation',
+                 depends: snapd_glib_gir,
+-                command : [docgen, 'generate', '--config', settings_file, '--no-namespace-dir', '--output-dir', join_paths('@OUTDIR@', 'snapd-glib'), join_paths (meson.project_build_root (), 'snapd-glib', 'Snapd-2.gir')],
+-                output: 'snapd-glib',
++                command : [docgen, 'generate', '--config', settings_file, '--no-namespace-dir', '--output-dir', join_paths('@OUTDIR@', 'html'), join_paths (meson.project_build_root (), 'snapd-glib', 'Snapd-2.gir')],
++                output: 'html',
+                 build_by_default: true,
+                 install: true,
+-                install_dir: get_option('prefix') / get_option('datadir') / 'doc',) # installs to PREFIX/share/doc/snapd-glib
++                install_dir: get_option('prefix') / get_option('datadir') / 'doc' / 'libsnapd-glib-dev',) # installs to PREFIX/share/doc/libsnapd-glib-dev/html
+ endif

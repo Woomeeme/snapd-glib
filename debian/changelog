@@ -1,3 +1,120 @@
+snapd-glib (1.67-2) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * Add patch for snapdqt_global.h not being installed breaking builds
+    of reverse dependencies like plasma-discover. (Closes: #1104844)
+
+ -- Mike Gabriel <sunweaver@debian.org>  Tue, 20 May 2025 09:22:58 +0200
+
+snapd-glib (1.67-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/patches:
+    + Add 2001_install-docs-to-html-subfolder.patch. Use a different install
+      target for doc files.
+  * debian/control:
+    + Drop from B-D: gtk-doc-tools, add gi-docgen instead.
+    + Bump Standards-Version: to 4.7.2. No changes needed.
+  * debian/rules:
+    + Drop execute_before_dh_install: override. No need to move doc files
+      around anymore.
+  * debian/libsnapd-glib-2-1.symbols:
+    + Update file.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Sun, 04 May 2025 20:51:31 +0200
+
+snapd-glib (1.66-2) unstable; urgency=medium
+
+  * debian/patches:
+    + Update 1001_support-qt5+qt6-dual-builds.patch. Fix filenames of generated
+      .cmake files when building against Qt6. Thanks to Aurélien COUDERC for
+      testing the Qt6 builds of snapd-glib.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Tue, 01 Apr 2025 14:31:58 +0200
+
+snapd-glib (1.66-1) unstable; urgency=medium
+
+  * Re-upload to unstable as is.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Wed, 12 Mar 2025 08:17:58 +0100
+
+snapd-glib (1.66-1~exp2) experimental; urgency=medium
+
+  * debian/patches:
+    + Update 1001_support-qt5+qt6-dual-builds.patch. CMake folder names required
+      adjustments to be automatically found by CMake.
+  * debian/libsnapd-qt{,6}-dev.install:
+    + Adjust to path name changes of CMake configuration files.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Mon, 10 Mar 2025 09:34:09 +0100
+
+snapd-glib (1.66-1~exp1) experimental; urgency=medium
+
+  * Upload to experimental.
+
+  [ Scarlett Moore ]
+  * New upstream release (1.66)
+  * Bump standards version; no changes required.
+
+  [ Mike Gabriel ]
+  * debian/patches:
+    + Add 1001_support-qt5+qt6-dual-builds.patch. Support dually building
+      against Qt5 and Qt6.
+  * debian/:
+    + Dual build against Qt5 and Qt6 (introducing new Qt6-related bin:pkgs.
+  * debian/control:
+    + Drop from B-D: pkg-kde-tools. Not used anymore.
+    + Add ${gir:Provides} to libsnapd-glib-dev.
+  * debian/copyright:
+    + Update copyright attributions for debian/.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Mon, 10 Mar 2025 08:37:54 +0100
+
+snapd-glib (1.66-0ubuntu1) plucky; urgency=medium
+
+  * New upstream release (1.66)
+  * Drop no longer required upstream patches.
+  * Update symbols from build logs.
+
+ -- Rik Mills <rikmills@kde.org>  Sun, 26 Jan 2025 13:39:01 +0000
+
+snapd-glib (1.65-0ubuntu3) plucky; urgency=medium
+
+  * Rebuild against Qt 6.7.2
+
+ -- Rik Mills <rikmills@kde.org>  Wed, 30 Oct 2024 10:42:42 +0000
+
+snapd-glib (1.65-0ubuntu2) oracular; urgency=medium
+
+  * debian/patches: Apply upstream_fix-build-in-armhf.patch to fix tests
+    on armhf. (LP: #2077200)
+  * debian/rules: Make build time tests fatal again.
+
+ -- Rik Mills <rikmills@kde.org>  Tue, 10 Sep 2024 11:42:29 +0100
+
+snapd-glib (1.65-0ubuntu1) oracular; urgency=medium
+
+  [ Simon Quigley ]
+  * New upstream release.
+
+  [ Rik Mills ]
+  * Add upstream_install-notice-header.patch to fix plasma-discover
+    FTBFS.
+  * Do not build for Qt6 on i386, as build dependencies are not available.
+  * Make build time tests non fatal for now:
+    https://github.com/canonical/snapd-glib/issues/162
+
+ -- Rik Mills <rikmills@kde.org>  Sun, 07 Jul 2024 06:29:35 +0100
+
+snapd-glib (1.64-1ubuntu1) oracular; urgency=medium
+
+  * Merge from Debian unstable.  Remaining changes:
+    - debian/tests/control: Unmark unit test as flaky
+  * Dropped changes, no longer needed:
+    - debian/libsnapd-qt1.symbols: Use C++ symbol names.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 06 Jun 2024 14:39:16 -0700
+
 snapd-glib (1.64-1) unstable; urgency=medium
 
   * New upstream release.
@@ -19,6 +136,41 @@ snapd-glib (1.63-5.1) unstable; urgency=medium
 
  -- Bo YU <tsu.yubo@gmail.com>  Mon, 08 Jan 2024 16:11:01 +0800
 
+snapd-glib (1.64-0ubuntu5) noble; urgency=medium
+
+  * No-change rebuild for CVE-2024-3094
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Sun, 31 Mar 2024 08:23:03 +0000
+
+snapd-glib (1.64-0ubuntu4) noble; urgency=medium
+
+  * No-change rebuild against libqt5core5t64
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Fri, 15 Mar 2024 07:08:58 +0000
+
+snapd-glib (1.64-0ubuntu3) noble; urgency=medium
+
+  * No-change rebuild against libglib2.0-0t64
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Fri, 08 Mar 2024 06:59:07 +0000
+
+snapd-glib (1.64-0ubuntu2) mantic; urgency=medium
+
+  * Update symbols files
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Thu, 13 Jul 2023 16:23:38 -0400
+
+snapd-glib (1.64-0ubuntu1) mantic; urgency=medium
+
+  * Sync with Debian. Remaining changes:
+    + debian/libsnapd-qt1.symbols:
+      - Use C++ symbol names.
+  * debian/tests/control: Unmark unit test as flaky
+  * New upstream release compatible with glib 2.77.0
+  * Update symbols files
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Thu, 13 Jul 2023 15:42:17 -0400
+
 snapd-glib (1.63-5) unstable; urgency=medium
 
   [ Jeremy Bicha ]
@@ -31,6 +183,15 @@ snapd-glib (1.63-5) unstable; urgency=medium
       Paul Gevery. (Closes: #1019707, #1018083).
 
  -- Mike Gabriel <sunweaver@debian.org>  Fri, 27 Jan 2023 20:50:10 +0100
+
+snapd-glib (1.63-4ubuntu1) lunar; urgency=medium
+
+  * Merge with Debian, remaining Ubuntu changes:
+    + Build-Depend on dh-sequence-translations instead of kde-symbolshelper
+    + debian/libsnapd-qt1.symbols:
+      - Use C++ symbol names.
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Thu, 15 Dec 2022 09:40:26 -0500
 
 snapd-glib (1.63-4) unstable; urgency=medium
 
@@ -84,6 +245,16 @@ snapd-glib (1.63-1) experimental; urgency=medium
 
  -- Mike Gabriel <sunweaver@debian.org>  Thu, 22 Sep 2022 22:41:17 +0200
 
+snapd-glib (1.63-0ubuntu1) kinetic; urgency=medium
+
+  * New upstream release
+  * Build with libsoup3
+  * Update libraries for soname bump
+  * debian/libsnapd-qt-2-1.symbols: Add new symbols
+  * New upstream release
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 24 Aug 2022 08:03:42 -0400
+
 snapd-glib (1.60-1) unstable; urgency=medium
 
   * New upstream release.
@@ -91,6 +262,28 @@ snapd-glib (1.60-1) unstable; urgency=medium
     + Update .symbols files.
 
  -- Mike Gabriel <sunweaver@debian.org>  Sat, 23 Apr 2022 00:54:39 +0200
+
+snapd-glib (1.60-0ubuntu1) jammy; urgency=medium
+
+  * New upstream release.
+  * debian/*.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 17 Feb 2022 12:45:02 +1300
+
+snapd-glib (1.59-3ubuntu1) jammy; urgency=medium
+
+  * Merge with Debian, remaining Ubuntu changes:
+  * debian/rules:
+    - Use dh-translations to make translatable
+    - Not using pkgkde_symbolshelper
+  * debian/control:
+    - Set maintainer to Ubuntu.
+    - Build-depend on dh-translations, drop pkgkde_symbolshelper
+  * debian/libsnapd-qt1.symbols:
+    - Use C++ symbol names.
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 17 Feb 2022 12:33:08 +1300
 
 snapd-glib (1.59-3) unstable; urgency=medium
 

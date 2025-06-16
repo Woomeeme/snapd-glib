@@ -13,18 +13,19 @@
 #include <QtCore/QObject>
 #include <Snapd/WrappedObject>
 
-class Q_DECL_EXPORT QSnapdPlugRef : public QSnapdWrappedObject
-{
-    Q_OBJECT
+#include "snapdqt_global.h"
 
-    Q_PROPERTY(QString plug READ plug)
-    Q_PROPERTY(QString snap READ snap)
+class LIBSNAPDQT_EXPORT QSnapdPlugRef : public QSnapdWrappedObject {
+  Q_OBJECT
+
+  Q_PROPERTY(QString plug READ plug)
+  Q_PROPERTY(QString snap READ snap)
 
 public:
-    explicit QSnapdPlugRef (void* snapd_object, QObject* parent = 0);
+  explicit QSnapdPlugRef(void *snapd_object, QObject *parent = 0);
 
-    QString plug () const;
-    QString snap () const;
+  QString plug() const;
+  QString snap() const;
 };
 
 #endif

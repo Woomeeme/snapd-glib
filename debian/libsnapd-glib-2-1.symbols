@@ -1,3 +1,4 @@
+# SymbolsHelper-Confirmed: 1.66 amd64 arm64 armhf i386 ppc64el riscv64 s390x
 libsnapd-glib-2.so.1 libsnapd-glib-2-1 #MINVER#
 * Build-Depends-Package: libsnapd-glib-dev
  snapd_alias_get_app@Base 1.8
@@ -28,12 +29,17 @@ libsnapd-glib-2.so.1 libsnapd-glib-2-1 #MINVER#
  snapd_auth_data_get_macaroon@Base 0.1
  snapd_auth_data_get_type@Base 0.1
  snapd_auth_data_new@Base 0.1
+ snapd_autorefresh_change_data_get_refresh_forced@Base 1.65
+ snapd_autorefresh_change_data_get_snap_names@Base 1.65
+ snapd_autorefresh_change_data_get_type@Base 1.65
  snapd_category_details_get_name@Base 1.64
  snapd_category_details_get_type@Base 1.64
  snapd_category_get_featured@Base 1.64
  snapd_category_get_name@Base 1.64
  snapd_category_get_type@Base 1.64
+ snapd_change_data_get_type@Base 1.65
  snapd_change_filter_get_type@Base 1.29
+ snapd_change_get_data@Base 1.65
  snapd_change_get_error@Base 1.30
  snapd_change_get_id@Base 1.5
  snapd_change_get_kind@Base 1.5
@@ -160,9 +166,21 @@ libsnapd-glib-2.so.1 libsnapd-glib-2-1 #MINVER#
  snapd_client_get_logs_finish@Base 1.64
  snapd_client_get_logs_sync@Base 1.64
  snapd_client_get_maintenance@Base 1.45
+ snapd_client_get_model_assertion_async@Base 1.67
+ snapd_client_get_model_assertion_finish@Base 1.67
+ snapd_client_get_model_assertion_sync@Base 1.67
+ snapd_client_get_notices_async@Base 1.65
+ snapd_client_get_notices_finish@Base 1.65
+ snapd_client_get_notices_sync@Base 1.65
+ snapd_client_get_notices_with_filters_async@Base 1.65
+ snapd_client_get_notices_with_filters_finish@Base 1.65
+ snapd_client_get_notices_with_filters_sync@Base 1.65
  snapd_client_get_sections_async@Base 1.7
  snapd_client_get_sections_finish@Base 1.7
  snapd_client_get_sections_sync@Base 1.7
+ snapd_client_get_serial_assertion_async@Base 1.67
+ snapd_client_get_serial_assertion_finish@Base 1.67
+ snapd_client_get_serial_assertion_sync@Base 1.67
  snapd_client_get_snap_async@Base 1.42
  snapd_client_get_snap_conf_async@Base 1.48
  snapd_client_get_snap_conf_finish@Base 1.48
@@ -210,6 +228,8 @@ libsnapd-glib-2.so.1 libsnapd-glib-2-1 #MINVER#
  snapd_client_logout_sync@Base 1.55
  snapd_client_new@Base 0.1
  snapd_client_new_from_socket@Base 1.5
+ snapd_client_notices_set_after_notice@Base 1.66
+ snapd_client_notices_set_since_nanoseconds@Base 1.66
  snapd_client_prefer_async@Base 1.25
  snapd_client_prefer_finish@Base 1.25
  snapd_client_prefer_sync@Base 1.25
@@ -286,6 +306,9 @@ libsnapd-glib-2.so.1 libsnapd-glib-2-1 #MINVER#
  snapd_get_interfaces_get_type@Base 1.25
  snapd_get_interfaces_legacy_get_type@Base 1.48
  snapd_get_logs_get_type@Base 1.64
+ snapd_get_model_get_type@Base 1.67
+ snapd_get_model_serial_get_type@Base 1.67
+ snapd_get_notices_get_type@Base 1.65
  snapd_get_sections_get_type@Base 1.25
  snapd_get_snap_conf_get_type@Base 1.48
  snapd_get_snap_get_type@Base 1.25
@@ -327,13 +350,37 @@ libsnapd-glib-2.so.1 libsnapd-glib-2-1 #MINVER#
  snapd_markdown_parser_new@Base 1.48
  snapd_markdown_parser_parse@Base 1.48
  snapd_markdown_parser_set_preserve_whitespace@Base 1.48
- snapd_markdown_version_get_type@Base 1.48
+#MISSING: 1.67# snapd_markdown_version_get_type@Base 1.48
  snapd_media_get_height@Base 1.45
  snapd_media_get_media_type@Base 1.45
  snapd_media_get_type@Base 1.45
  snapd_media_get_url@Base 1.45
  snapd_media_get_width@Base 1.45
  snapd_media_new@Base 1.45
+ snapd_notice_compare_last_occurred@Base 1.66
+ snapd_notice_get_expire_after@Base 1.65
+ snapd_notice_get_first_occurred2@Base 1.66
+ snapd_notice_get_first_occurred@Base 1.65
+ snapd_notice_get_id@Base 1.65
+ snapd_notice_get_key@Base 1.65
+ snapd_notice_get_last_data2@Base 1.66
+ snapd_notice_get_last_data@Base 1.65
+ snapd_notice_get_last_occurred2@Base 1.66
+ snapd_notice_get_last_occurred@Base 1.65
+ snapd_notice_get_last_occurred_nanoseconds@Base 1.66
+ snapd_notice_get_last_repeated2@Base 1.66
+ snapd_notice_get_last_repeated@Base 1.65
+ snapd_notice_get_notice_type@Base 1.65
+ snapd_notice_get_occurrences@Base 1.65
+ snapd_notice_get_repeat_after@Base 1.65
+ snapd_notice_get_type@Base 1.65
+ snapd_notice_get_user_id@Base 1.65
+ snapd_notice_type_get_type@Base 1.65
+ snapd_notices_monitor_get_type@Base 1.66
+ snapd_notices_monitor_new@Base 1.66
+ snapd_notices_monitor_new_with_client@Base 1.66
+ snapd_notices_monitor_start@Base 1.66
+ snapd_notices_monitor_stop@Base 1.66
  snapd_plug_get_attribute@Base 1.3
  snapd_plug_get_attribute_names@Base 1.3
  snapd_plug_get_connected_slots@Base 1.48
@@ -414,6 +461,7 @@ libsnapd-glib-2.so.1 libsnapd-glib-2-1 #MINVER#
  snapd_snap_get_name@Base 0.1
  snapd_snap_get_prices@Base 0.1
  snapd_snap_get_private@Base 0.1
+ snapd_snap_get_proceed_time@Base 1.65
  snapd_snap_get_publisher_display_name@Base 1.42
  snapd_snap_get_publisher_id@Base 1.42
  snapd_snap_get_publisher_username@Base 1.42
@@ -455,6 +503,9 @@ libsnapd-glib-2.so.1 libsnapd-glib-2-1 #MINVER#
  snapd_system_information_get_store@Base 1.7
  snapd_system_information_get_type@Base 0.1
  snapd_system_information_get_version@Base 0.1
+ snapd_task_data_get_affected_snaps@Base 1.66
+ snapd_task_data_get_type@Base 1.66
+ snapd_task_get_data@Base 1.66
  snapd_task_get_id@Base 0.4
  snapd_task_get_kind@Base 0.4
  snapd_task_get_progress_done@Base 0.4

@@ -7,20 +7,18 @@
  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
  */
 
-#ifndef __SNAPD_POST_ASSERTIONS_H__
-#define __SNAPD_POST_ASSERTIONS_H__
+#pragma once
 
 #include "snapd-request.h"
 
 G_BEGIN_DECLS
 
-G_DECLARE_FINAL_TYPE (SnapdPostAssertions, snapd_post_assertions, SNAPD, POST_ASSERTIONS, SnapdRequest)
+G_DECLARE_FINAL_TYPE(SnapdPostAssertions, snapd_post_assertions, SNAPD,
+                     POST_ASSERTIONS, SnapdRequest)
 
-SnapdPostAssertions *_snapd_post_assertions_new (GStrv                assertions,
-                                                 GCancellable        *cancellable,
-                                                 GAsyncReadyCallback  callback,
-                                                 gpointer             user_data);
+SnapdPostAssertions *_snapd_post_assertions_new(GStrv assertions,
+                                                GCancellable *cancellable,
+                                                GAsyncReadyCallback callback,
+                                                gpointer user_data);
 
 G_END_DECLS
-
-#endif /* __SNAPD_POST_ASSERTIONS_H__ */

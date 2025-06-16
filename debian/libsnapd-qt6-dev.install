@@ -1,0 +1,4 @@
+usr/include/*/qt6/snapd-qt-2
+usr/lib/*/cmake/SnapdQt6-2/
+usr/lib/*/pkgconfig/snapd-qt6-2.pc
+usr/lib/*/libsnapd-qt6-2.so

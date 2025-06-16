@@ -1,4 +1,4 @@
-usr/include/snapd-glib-2
+usr/include/*/snapd-glib-2
 usr/lib/*/pkgconfig/snapd-glib-2.pc
 usr/lib/*/libsnapd-glib*.so
 usr/share/gir-1.0

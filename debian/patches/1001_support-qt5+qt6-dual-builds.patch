@@ -1,0 +1,108 @@
+Description: Support dually building against Qt5 and Qt6.
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+Forwarded: pending
+
+--- a/snapd-qt/meson.build
++++ b/snapd-qt/meson.build
+@@ -6,9 +6,12 @@
+     qt_min_version = '5.9.5'
+     qt_version = 'qt5'
+     qt_core_camel = 'Qt5Core'
+-    description = 'Snapd Qt'
++    description = 'Snapd Qt5'
+     cmake_base_name = 'SnapdQt5'
++    cmake_name = 'Snapd'
++    cmake_name_dir = 'Snapd'
+     library_name = 'snapd-qt'
++    include_name = 'snapd-qt'
+     qt_core_dep = dependency ('qt5', modules: [ 'Core' ])
+     qt_network_dep = dependency ('qt5', modules: [ 'Network' ])
+     qml_dep = dependency ('qt5', modules: [ 'Qml' ])
+@@ -18,9 +21,12 @@
+     qt_min_version = '6.2.4'
+     qt_version = 'qt6'
+     qt_core_camel = 'Qt6Core'
+-    description = 'Snapd Qt'
++    description = 'Snapd Qt6'
+     cmake_base_name = 'SnapdQt6'
+-    library_name = 'snapd-qt'
++    cmake_name = 'SnapdQt6'
++    cmake_name_dir = 'SnapdQt6'
++    library_name = 'snapd-qt6'
++    include_name = 'snapd-qt'
+     qt6_core_dep = dependency ('qt6', modules: [ 'Core' ])
+     qt6_network_dep = dependency ('qt6', modules: [ 'Network' ])
+     qml_dep = dependency ('qt6', modules: [ 'Qml' ])
+@@ -29,6 +35,8 @@
+ qt_name = 'Snapd'
+ if not get_option('soup2')
+       library_name += '-2'
++      include_name += '-2'
++      cmake_name_dir += '-2'
+       qt_name += '2'
+ endif
+ 
+@@ -40,9 +48,9 @@
+     include_type: 'system'
+ )
+ 
+-install_header_dir = join_paths (includedir, library_name, 'Snapd')
++install_header_dir = join_paths (includedir, f'@qt_version@', include_name, 'Snapd')
+ qml_dir = join_paths (libdir, f'@qt_version@', 'qml', f'@qt_name@')
+-cmake_dir = join_paths (libdir, 'cmake', qt_name)
++cmake_dir = join_paths (libdir, 'cmake', cmake_name_dir)
+ 
+ source_cpp = [
+   'alias.cpp',
+@@ -176,10 +184,11 @@
+ pc_required_qt=f'@qt_core_camel@'
+ pc.generate (libraries: snapd_qt_lib,
+               filebase: library_name,
+-              name: 'Snapd Qt',
++              name: f'@description@',
+               description: 'Library for accessing snapd',
+               version: meson.project_version (),
+-              requires: pc_required_qt,)
++              requires: pc_required_qt,
++              subdirs: join_paths (f'@qt_version@', include_name),)
+ 
+ install_data ('qmldir',
+               install_dir: qml_dir)
+@@ -189,11 +198,13 @@
+ cmake_conf.set ('includedir', includedir)
+ cmake_conf.set ('version', meson.project_version ())
+ cmake_conf.set ('library_name', library_name)
++cmake_conf.set ('include_name', include_name)
++cmake_conf.set ('qt_version', qt_version)
+ cmake_file = configure_file (input: f'@cmake_base_name@Config.cmake.in',
+-                              output: 'SnapdConfig.cmake',
++                              output: f'@cmake_name@Config.cmake',
+                               configuration: cmake_conf)
+ cmake_version_file = configure_file (input: f'@cmake_base_name@ConfigVersion.cmake.in',
+-                                      output: 'SnapdConfigVersion.cmake',
++                                      output: f'@cmake_name@ConfigVersion.cmake',
+                                       configuration: cmake_conf)
+ install_data (cmake_file, cmake_version_file,
+               install_dir: cmake_dir)
+--- a/snapd-qt/SnapdQt5Config.cmake.in
++++ b/snapd-qt/SnapdQt5Config.cmake.in
+@@ -2,7 +2,7 @@
+ # SNAPD_LIBRARIES - The libraries needed to use snapd-qt
+ 
+ set(SNAPD_LIBRARIES @libdir@/lib@library_name@.so)
+-set(SNAPD_INCLUDE_DIRS @includedir@/@library_name@/)
++set(SNAPD_INCLUDE_DIRS @includedir@/@qt_version@/@include_name@/)
+ 
+ add_library(Snapd::Core SHARED IMPORTED)
+ set_target_properties(Snapd::Core PROPERTIES
+--- a/snapd-qt/SnapdQt6Config.cmake.in
++++ b/snapd-qt/SnapdQt6Config.cmake.in
+@@ -2,7 +2,7 @@
+ # SNAPD_LIBRARIES - The libraries needed to use snapd-qt
+ 
+ set(SNAPD_LIBRARIES @libdir@/lib@library_name@.so)
+-set(SNAPD_INCLUDE_DIRS @includedir@/@library_name@/)
++set(SNAPD_INCLUDE_DIRS @includedir@/@qt_version@/@include_name@/)
+ 
+ add_library(Snapd::Core SHARED IMPORTED)
+ set_target_properties(Snapd::Core PROPERTIES

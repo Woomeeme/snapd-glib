@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/snapcore/snapd-glib.svg?branch=master)](https://travis-ci.org/snapcore/snapd-glib)
-
 ## snapd-glib
 
 snapd-glib is a library to allow GLib based applications access to snapd, the daemon that controls Snaps.
@@ -13,8 +11,8 @@ The following languages / platforms are supported:
   * Qt
   * QML
 
-See [snapcraft.io](https://snapcraft.io) for more information.
+Documentation is available [online](https://canonical.github.io/snapd-glib/). See [snapcraft.io](https://snapcraft.io) for more information on snapd.
 
 ## Reporting bugs
 
-If you have found an issue with the application, please [file a issue](https://github.com/snapcore/snapd-glib/issues/new) on the [issues list on GitHub](https://github.com/snapcore/snapd-glib/issues).
+If you have found an issue with the application, please [file an issue](https://github.com/canonical/snapd-glib/issues/new) on the [issues list on GitHub](https://github.com/snapcore/snapd-glib/issues).

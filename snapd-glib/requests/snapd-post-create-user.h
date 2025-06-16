@@ -7,29 +7,28 @@
  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
  */
 
-#ifndef __SNAPD_POST_CREATE_USER_H__
-#define __SNAPD_POST_CREATE_USER_H__
+#pragma once
 
 #include "snapd-request.h"
 #include "snapd-user-information.h"
 
 G_BEGIN_DECLS
 
-G_DECLARE_FINAL_TYPE (SnapdPostCreateUser, snapd_post_create_user, SNAPD, POST_CREATE_USER, SnapdRequest)
+G_DECLARE_FINAL_TYPE(SnapdPostCreateUser, snapd_post_create_user, SNAPD,
+                     POST_CREATE_USER, SnapdRequest)
 
-SnapdPostCreateUser  *_snapd_post_create_user_new                  (const gchar          *email,
-                                                                    GCancellable         *cancellable,
-                                                                    GAsyncReadyCallback   callback,
-                                                                    gpointer              user_data);
+SnapdPostCreateUser *_snapd_post_create_user_new(const gchar *email,
+                                                 GCancellable *cancellable,
+                                                 GAsyncReadyCallback callback,
+                                                 gpointer user_data);
 
-void                  _snapd_post_create_user_set_sudoer           (SnapdPostCreateUser  *request,
-                                                                    gboolean              sudoer);
+void _snapd_post_create_user_set_sudoer(SnapdPostCreateUser *request,
+                                        gboolean sudoer);
 
-void                  _snapd_post_create_user_set_known            (SnapdPostCreateUser  *request,
-                                                                    gboolean              known);
+void _snapd_post_create_user_set_known(SnapdPostCreateUser *request,
+                                       gboolean known);
 
-SnapdUserInformation *_snapd_post_create_user_get_user_information (SnapdPostCreateUser  *request);
+SnapdUserInformation *
+_snapd_post_create_user_get_user_information(SnapdPostCreateUser *request);
 
 G_END_DECLS
-
-#endif /* __SNAPD_POST_CREATE_USER_H__ */

@@ -1,4 +1,4 @@
-usr/include/snapd-qt-2
-usr/lib/*/cmake
+usr/include/*/qt5/snapd-qt-2
+usr/lib/*/cmake/Snapd-2/
 usr/lib/*/pkgconfig/snapd-qt-2.pc
-usr/lib/*/libsnapd-qt*.so
+usr/lib/*/libsnapd-qt-2.so

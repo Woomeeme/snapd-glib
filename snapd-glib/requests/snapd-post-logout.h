@@ -7,22 +7,19 @@
  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
  */
 
-#ifndef __SNAPD_POST_LOGOUT_H__
-#define __SNAPD_POST_LOGOUT_H__
+#pragma once
 
 #include "snapd-request.h"
 
 G_BEGIN_DECLS
 
-G_DECLARE_FINAL_TYPE (SnapdPostLogout, snapd_post_logout, SNAPD, POST_LOGOUT, SnapdRequest)
+G_DECLARE_FINAL_TYPE(SnapdPostLogout, snapd_post_logout, SNAPD, POST_LOGOUT,
+                     SnapdRequest)
 
-SnapdPostLogout *_snapd_post_logout_new                  (gint64               id,
-                                                          GCancellable        *cancellable,
-                                                          GAsyncReadyCallback  callback,
-                                                          gpointer             user_data);
+SnapdPostLogout *_snapd_post_logout_new(gint64 id, GCancellable *cancellable,
+                                        GAsyncReadyCallback callback,
+                                        gpointer user_data);
 
-gboolean         _snapd_post_logout_get_user_information (SnapdPostLogout *request);
+gboolean _snapd_post_logout_get_user_information(SnapdPostLogout *request);
 
 G_END_DECLS
-
-#endif /* __SNAPD_POST_LOGOUT_H__ */

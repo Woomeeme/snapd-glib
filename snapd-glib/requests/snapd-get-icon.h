@@ -7,8 +7,7 @@
  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
  */
 
-#ifndef __SNAPD_GET_ICON_H__
-#define __SNAPD_GET_ICON_H__
+#pragma once
 
 #include "snapd-request.h"
 
@@ -16,15 +15,13 @@
 
 G_BEGIN_DECLS
 
-G_DECLARE_FINAL_TYPE (SnapdGetIcon, snapd_get_icon, SNAPD, GET_ICON, SnapdRequest)
+G_DECLARE_FINAL_TYPE(SnapdGetIcon, snapd_get_icon, SNAPD, GET_ICON,
+                     SnapdRequest)
 
-SnapdGetIcon *_snapd_get_icon_new      (const gchar         *name,
-                                        GCancellable        *cancellable,
-                                        GAsyncReadyCallback  callback,
-                                        gpointer             user_data);
+SnapdGetIcon *_snapd_get_icon_new(const gchar *name, GCancellable *cancellable,
+                                  GAsyncReadyCallback callback,
+                                  gpointer user_data);
 
-SnapdIcon    *_snapd_get_icon_get_icon (SnapdGetIcon *request);
+SnapdIcon *_snapd_get_icon_get_icon(SnapdGetIcon *request);
 
 G_END_DECLS
-
-#endif /* __SNAPD_GET_ICON_H__ */

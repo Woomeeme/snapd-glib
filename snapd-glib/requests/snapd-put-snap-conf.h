@@ -7,21 +7,19 @@
  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
  */
 
-#ifndef __SNAPD_PUT_SNAP_CONF_H__
-#define __SNAPD_PUT_SNAP_CONF_H__
+#pragma once
 
 #include "snapd-request-async.h"
 
 G_BEGIN_DECLS
 
-G_DECLARE_FINAL_TYPE (SnapdPutSnapConf, snapd_put_snap_conf, SNAPD, PUT_SNAP_CONF, SnapdRequestAsync)
+G_DECLARE_FINAL_TYPE(SnapdPutSnapConf, snapd_put_snap_conf, SNAPD,
+                     PUT_SNAP_CONF, SnapdRequestAsync)
 
-SnapdPutSnapConf *_snapd_put_snap_conf_new (const gchar         *name,
-                                            GHashTable          *key_values,
-                                            GCancellable        *cancellable,
-                                            GAsyncReadyCallback  callback,
-                                            gpointer             user_data);
+SnapdPutSnapConf *_snapd_put_snap_conf_new(const gchar *name,
+                                           GHashTable *key_values,
+                                           GCancellable *cancellable,
+                                           GAsyncReadyCallback callback,
+                                           gpointer user_data);
 
 G_END_DECLS
-
-#endif /* __SNAPD_PUT_SNAP_CONF_H__ */
